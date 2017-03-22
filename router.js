@@ -1,6 +1,6 @@
-define(["app"], function (app) {
+﻿define(["app"], function (app) {
     return app.run([
-        '$rootScope',
+        '$rootScope',   
         '$state',
         '$stateParams',
         '$modal',
