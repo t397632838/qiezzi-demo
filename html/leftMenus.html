@@ -1,0 +1,14 @@
+
+<div class="masterleft">
+    <ul class="mastermenu ng-isolate-scope">
+        <li class="mastermenu-first">
+        </li>
+        <li class="autoheight_menu">
+            <ul>
+                <li ng-repeat="p in adminNav" ng-class="p.class">
+                    <a href="#" ng-click="open(p.url)"></a><i style="top: 130px;"></i><u ng-bind="p.name" style="top: 125px;">今日工作</u>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

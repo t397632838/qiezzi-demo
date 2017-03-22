@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html  ng-controller="frameworkService">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="./css/base.css" rel="stylesheet" type="text/css">
+<link href="./css/main.css" rel="stylesheet" type="text/css">
+<link href="./css/override.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <div ng-include="leftMenus"></div>
+
+    <div ui-view></div>
+
+</body>
+<script type='text/javascript' src='./js/require.js' data-main='main.js'></script>
+</html>

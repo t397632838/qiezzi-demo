@@ -1,0 +1,74 @@
+  {
+    "adminNav": [
+      {
+        "name": "今日工作",
+        "url": "todayWork",
+        "class":"mastermenu-second"
+      },
+      {
+        "name": "患者管理",
+        "url": "",
+        "class":"mastermenu-third"
+      },
+      {
+        "name": "预约管理",
+        "url": "",
+        "class":"mastermenu-fourth"
+      },
+      {
+        "name": "查询服务",
+        "url": "",
+        "class":"mastermenu-fifth"
+      },
+      {
+        "name": "回访",
+        "url": "",
+        "class":"mastermenu-interview"
+      },
+      {
+        "name": "统计管理",
+        "url": "",
+        "class":"mastermenu-tongji"
+      },
+      {
+        "name": "财务",
+        "url": "",
+        "class":"mastermenu-finance"
+      },
+      {
+        "name": "短信管理",
+        "url": "",
+        "class":"mastermenu-duanxin"
+      },
+      {
+        "name": "库存管理",
+        "url": "",
+        "class":"mastermenu-kufang"
+      },
+      {
+        "name": "诊所管理",
+        "url": "",
+        "class":"mastermenu-shezhi"
+      },
+      {
+        "name": "个人中心",
+        "url": "",
+        "class":"mastermenu-info"
+      }
+    ],
+    "banners":[
+      {
+        "name":"接诊台"
+      },
+      {
+        "name":"收银台"
+      },
+      {
+        "name":"我的工作"
+      },
+      {
+        "name":"回访"
+      }
+    ]
+  }
+

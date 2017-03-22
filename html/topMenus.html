@@ -1,0 +1,67 @@
+<div class="header_one">
+    <span ng-repeat="b in banners" ng-class="{'checked': currentIndex==$index}" class="">
+        <a style="color:#333;padding:10px" ng-bind="b.name">接诊台</a>
+    </span>
+    <div class="header_two">
+        <!--header_two_xp-->
+        <div ng-init="btnCurrentIndex=1" ng-hide="sidebarDoctorNav" class="" style="">
+            <div class="inlineblock ssdk jzt_zi">
+                <input type="text" class="ssk ng-pristine ng-valid ng-touched" ng-model="GlobalSearchStr" ng-mousedown="showHistory()" placeholder="姓名/病历号/拼音码/手机号" style=""><a ng-click="GlobalSearchPatientClick(GlobalSearchStr)"><span class="fdimg"></span></a>
+                <div class="showHistoryRecordDiv ng-hide" ng-show="showHistoryRecord">
+                    <ul class="yuliuname">
+                        <li>
+                            <div class="ch_ss">
+                                最近搜索<span class="floatright padrightey cursorpoint" ng-click="removeAllHistoryRecord()">清空</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <button ng-class="{'button-a2':btnCurrentIndex==1,'button-a1':btnCurrentIndex!=1}" ng-click="btnCurrentIndex=1;createPatlog()" class="button-a2">新增挂号</button>
+            <button ng-class="{'button-a2':btnCurrentIndex==2,'button-a1':btnCurrentIndex!=2}" ng-click="btnCurrentIndex=2;createBook();" class="button-a1">新增预约</button>
+            <button ng-class="{'button-a2':btnCurrentIndex==3,'button-a1':btnCurrentIndex!=3}" ng-click="btnCurrentIndex=3;createPatient();" class="button-a1">新增患者</button>
+        </div>
+        <div ng-init="btnCurrentIndex=1" ng-show="sidebarDoctorNav" class="ng-hide" style="">
+            <div class="inlineblock ssdk jzt_zi">
+                <input type="text" class="ssk ng-pristine ng-untouched ng-valid" ng-model="GlobalSearchStr" ng-mousedown="showHistory()" placeholder="请输入患者名"><a ng-click="GlobalSearchPatientClick(GlobalSearchStr,1)"><span class="fdimg"></span></a>
+                <div class="showHistoryRecordDiv ng-hide" ng-show="showHistoryRecord">
+                    <ul class="yuliuname">
+                        <li>
+                            <div class="ch_ss">
+                                最近搜索<span class="floatright padrightey cursorpoint" ng-click="removeAllHistoryRecord()">清空</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <button ng-class="{'button-a2':btnCurrentIndex==1,'button-a1':btnCurrentIndex!=1}" ng-click="btnCurrentIndex=1;addCost()" class="button-a2 widthauto2">新增收费单</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="submenu_list jzt_block">
+    <p ng-class="" ng-click="selectDoctor(-1,'')">
+        <i class="caidan"></i><span class="marlefts">全部患者</span><span class="texthide ng-binding" ng-bind="statistics.todayPatientAmount" ng-class="{'paddnine': doctors.length>6}">0</span>
+    </p>
+    <ul class="list_one">
+        <!-- ngRepeat: doctor in doctors --><li ng-repeat="doctor in doctors" ng-class="{'defaultActiveTab': selectedDoctorIndex==$index}" ng-click="selectDoctor($index,doctor.DoctorCode)" class="ng-scope">
+        <i><img ng-src="./images/doctorDef.png" src="./images/doctorDef.png"></i>
+        <span class="texthide ng-binding" ng-bind="doctor.DoctorName">未分诊</span>
+        <span ng-bind="doctor.TodayPatientAmount" class="ng-binding">0</span>
+    </li><!-- end ngRepeat: doctor in doctors --><li ng-repeat="doctor in doctors" ng-class="{'defaultActiveTab': selectedDoctorIndex==$index}" ng-click="selectDoctor($index,doctor.DoctorCode)" class="ng-scope">
+        <i><img ng-src="http://manage.qiezzi.com/images/doctorDef.png" src="http://manage.qiezzi.com/images/doctorDef.png"></i>
+        <span class="texthide ng-binding" ng-bind="doctor.DoctorName">Dr.fsdfs</span>
+        <span ng-bind="doctor.TodayPatientAmount" class="ng-binding">0</span>
+    </li><!-- end ngRepeat: doctor in doctors -->
+    </ul>
+    <hr class="hr_color">
+    <ul class="list_two jzt_listtwo">
+        <li><a ng-class="{'defaultActiveTab': SelectedToday==0}" ng-click="clickTodayNew(0)"><i></i><span>今日预约</span><span ng-class="{'paddnine': doctors.length>4}"><span ng-bind="statistics.todayBookingArrivedPatientAmount" class="today_yi texthide rightling ng-binding">0</span>/<span class="today_er texthide ng-binding" ng-bind="statistics.todayBookingPatientAmount">0</span></span></a></li>
+        <li><a ng-class="{'defaultActiveTab': SelectedToday==1}" ng-click="clickTodayNew(1)"><i></i><span>今日挂号</span><span ng-class="{'paddnine': doctors.length>4}" class="texthide ng-binding" ng-bind="statistics.todayPatlogPatientAmount">0</span></a></li>
+        <li><a ng-class="{'defaultActiveTab': SelectedToday==2}" ng-click="clickTodayNew(2)"><i></i><span>今日就诊</span><span ng-class="{'paddnine': doctors.length>4}" class="texthide ng-binding" ng-bind="statistics.todayVisitedPatientAmount">0</span></a></li>
+        <li><a ng-class="{'defaultActiveTab': SelectedToday==3}" ng-click="clickTodayNew(3)"><i></i><span>今日新患者</span><span ng-class="{'paddnine': doctors.length>4}" class="texthide ng-binding" ng-bind="statistics.addedPatientAmount">0</span></a></li>
+    </ul>
+</div>
+
+<div ui-view></div>

@@ -1,0 +1,121 @@
+<div class="xinjianhuanzhe ng-scope" ng-click="showEdit=false;">
+    <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-minlength ng-valid-pattern" name="theForm" novalidate="">
+        <div class="qz-header">
+            <div class="col-xs-8">挂号登记</div>
+            <div class="col-xs-4"><img ng-click="cancel()" src="./images/closex.png"></div>
+        </div>
+        <div class="big-center folder_zone zksp scroll_y gh_zi">
+            <div class="form-group row">
+                <div class="co-1 text-right"><span class="basiccolor">*</span></div>
+                <div class="co-2 font-sm">姓名</div>
+                <div class="co-3">
+                    <input ng-hide="cantEdit" class="input-md qwidth ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" type="text" name="PatientNameHelp" ng-model="model.PatientName" ng-blur="slowHideSearchResult()" maxlength="50" ng-maxlength="50" ng-change="SearchPatient()" ng-click="ShowSearchResult()" autocomplete="off" required="" style="">
+                    <label class="cursorpoint add_star starlg"><i ng-class="{'fa fa-star grey':!model.isImportant,'fa fa-star yellow':model.isImportant}" class="fa fa-star grey" style=""><input type="checkbox" style="display:none;" ng-click="isImportance()"></i></label>
+                    <div ng-show="cantEdit" class="input-md gh_dj ng-hide" style=""><span class="name_style ng-binding"><span class="close_x cursorpoint" ng-click="removeSelectedPatient()"></span></span></div>
+                    <input type="hidden" name="PatientName" ng-model="model.PatientName" required="" ng-minlength="1" ng-maxlength="50" class="ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength" style="">
+                    <div ng-show="isShowSearchPatientResult&&searchPatients.length>0" class="ng-hide" style="">
+                        <ul class="yuliuname set_bookname">
+                            <!-- ngRepeat: p in searchPatients -->
+                        </ul>
+                    </div>
+                    <div ng-show="(theForm.PatientNameHelp.$touched || theForm.$submitted) && theForm.PatientNameHelp.$error.required" class="basiccolor lineheight30 ng-hide" style=""><span class="baocuo">!</span>请填写姓名</div>
+                    <span class="create_fdimg cursorpoint" ng-click="selectPatient()"></span>
+                    <!--<div ng-show="theForm.PatientNameHelp.$touched &&  (theForm.PatientNameHelp.$error.minlength || theForm.PatientNameHelp.$error.maxlength) " class="basiccolor">姓名不允许为空 2-20个字符，支持汉字、数字、字母及符号</div>-->
+                </div>
+            </div>
+            <div class="form-group row height_lineheight34">
+                <div class="co-1 text-right"><span class="basiccolor">*</span></div>
+                <div class="co-2 font-md">病历号</div>
+                <div class="co-3">
+                    <span ng-bind="model.PatientCode" ng-show="cantEdit" class="ng-binding ng-hide" style="">100002</span>
+                    <input type="text" ng-model="model.PatientCode" name="PatientCode" class="input-md qwidth ng-pristine ng-valid-pattern ng-valid-maxlength ng-valid ng-valid-required ng-touched" ng-pattern="/^[0-9a-zA-Z]*$/" ng-change="SearchPatientCode()" ng-maxlength="20" required="" ng-hide="cantEdit" style="">
+                    <!--<input type="button" ng-click="isEdit=true;" ng-show="!isEdit && !cantEdit" class="text-center button-a1 input-small" value="编辑">
+                    <input type="button" ng-click="savePatientCode()" ng-show="isEdit && !cantEdit" class="text-center button-a1 input-small" value="保存">-->
+                    <div class="basiccolor ng-hide" ng-show="(theForm.PatientCode.$dirty || theForm.$submitted)&&theForm.PatientCode.$error.required"><span class="baocuo">!</span>病历号不允许为空</div>
+                    <div class="basiccolor ng-hide" ng-show="(theForm.PatientCode.$dirty || theForm.$submitted)&&theForm.PatientCode.$error.pattern"><span class="baocuo">!</span>请输入数字，大小写字母</div>
+                    <div class="basiccolor ng-hide" ng-show="(theForm.PatientCode.$dirty || theForm.$submitted)&&theForm.PatientCode.$error.maxlength "><span class="baocuo">!</span>不能超过20个数字</div>
+                    <div class="basiccolor ng-hide" ng-show="PatientCodeError"><span class="baocuo">!</span>编号重复了</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="co-1"></div>
+                <div class="co-2 font-sm">性别</div>
+                <div class="co-3 guahao_nan heightsw check_begin">
+                    <div class="templateRadioGroup ng-isolate-scope" name="Sex" model="model.Sex" value="0" text="男">
+                        <label class="templateRadioLabel">
+                            <input type="radio" value="0" name="Sex" ng-disabled="disabled" class="templateRadio ng-pristine ng-untouched ng-valid" ng-model="model.Sex">
+                            <ins class="templateRadioHelp" ng-class="{Checked:model.Sex==0}"></ins><span  class="">男</span>
+                        </label>
+                    </div>
+                    <div class="templateRadioGroup ng-isolate-scope" name="Sex" model="model.Sex" value="1" text="女">
+                        <label class="templateRadioLabel">
+                            <input type="radio" value="1" name="Sex" ng-disabled="disabled" class="templateRadio ng-pristine ng-untouched ng-valid" ng-model="model.Sex">
+                            <ins class="templateRadioHelp" ng-class="{Checked:model.Sex==1}"></ins><span class="">女</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row heightsanl">
+                <div class="co-1"></div>
+                <div class="co-2 font-sm heightssi liness">年龄</div>
+                <div class="co-3 ager heightssi">
+                    <input type="text" ng-model="model.Age" ng-change="ageChange()" class="input-xs ng-pristine ng-untouched ng-valid">
+                    <span>岁</span>
+                </div>
+            </div>
+            <!-- ngIf: isGlobal_VisiblePatientContact --><div class="form-group row ng-scope">
+            <div class="co-1"></div>
+            <div class="co-2 font-sm">手机</div>
+            <div class="co-3">
+                <input type="text" name="Tel" ng-model="model.Tel" ng-model-options="{ updateOn: 'blur' }" ng-pattern="/^(1[345678][0-9]{9})$/" placeholder="可选填" maxlength="11" class="ng-pristine ng-untouched ng-valid ng-valid-pattern ng-valid-maxlength">
+                <div ng-show="(theForm.Tel.$touched || theForm.$submitted) &amp;&amp; theForm.Tel.$error.pattern" class="basiccolor ng-hide"><span class="baocuo">!</span>请输入有效的手机号码</div>
+            </div>
+        </div><!-- end ngIf: isGlobal_VisiblePatientContact -->
+            <!-- ngIf: isGlobal_VisiblePatientContact --><div class="form-group row ng-scope" >
+            <div class="co-1"></div>
+            <div class="co-2 font-sm">座机</div>
+            <div class="co-3">
+                <input type="text" placeholder="区号" class="gu_photo ng-pristine ng-untouched ng-valid ng-valid-pattern ng-valid-maxlength" name="Phone_First" ng-model="model.Phone_First" ng-pattern="/^[0-9]*$/" maxlength="4"><span class="ccccolor">—</span><input type="text" placeholder="可选填" class="gu_photo2 ng-pristine ng-untouched ng-valid ng-valid-pattern ng-valid-maxlength" name="Phone_Second" ng-model="model.Phone_Second" ng-pattern="/^[0-9]*$/" maxlength="8">
+            </div>
+        </div><!-- end ngIf: isGlobal_VisiblePatientContact -->
+            <!-- ngIf: !isGlobal_VisiblePatientContact -->
+            <!-- ngIf: !isGlobal_VisiblePatientContact -->
+            <div ng-show="(theForm.Phone_First.$touched || theForm.$submitted) &amp;&amp; theForm.Phone_First.$error.maxlength" class="basiccolor form-group row ng-hide">
+                <div class="co-1"></div>
+                <div class="co-2 font-sm"></div>
+                <div class="co-3">
+                    <span class="baocuo">!</span>请输入小于4个数字
+                </div>
+            </div>
+            <div ng-show="(theForm.Phone_Second.$touched || theForm.$submitted) &amp;&amp; theForm.Phone_Second.$error.maxlength" class="basiccolor form-group row ng-hide">
+                <div class="co-1"></div>
+                <div class="co-2 font-sm"></div>
+                <div class="co-3">
+                    <span class="baocuo">!</span>请输入小于8个数字
+                </div>
+            </div>
+            <div ng-show="(theForm.Phone_First.$touched || theForm.$submitted) &amp;&amp; theForm.Phone_First.$error.pattern" class="basiccolor form-group row ng-hide">
+                <div class="co-1"></div>
+                <div class="co-2 font-sm"></div>
+                <div class="co-3">
+                    <span class="baocuo">!</span>区号只能输入数字
+                </div>
+            </div>
+            <div ng-show="(theForm.Phone_Second.$touched || theForm.$submitted) &amp;&amp; theForm.Phone_Second.$error.pattern" class="basiccolor form-group row ng-hide">
+                <div class="co-1"></div>
+                <div class="co-2 font-sm"></div>
+                <div class="co-3">
+                    <span class="baocuo">!</span>座机号只能输入数字
+                </div>
+            </div>
+            <div class="hr_push"></div>
+        </div>
+        <div class="lastbutton martopse">
+            <button class="button-a2 ng-binding" ng-click="save(theForm)" ng-disabled="isProcess">保存</button>
+            <button class="button-a2" ng-click="saveAndPrint(theForm)" ng-disabled="isProcess">保存并打印</button>
+            <button class="button-a1" ng-click="cancel()">取消</button>
+        </div>
+    </form>
+    <!--挂号详情-->
+    <!-- ngIf: bindPrintTemplate -->
+</div>

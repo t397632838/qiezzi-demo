@@ -1,0 +1,108 @@
+<div class="submenu_list2" style="">
+    ﻿<div class="content-container yyzxtop">
+    <div class="first">
+        <div>
+            <p>患者</p>
+            <input class="ng-pristine ng-untouched ng-valid" type="text" ng-model="searchCondition.SearchStr" placeholder="姓名/病历号/拼音码/手机号">
+        </div>
+        <div>
+            <p>&nbsp;</p>
+            <button class="button-a1" ng-click="search();ifShow=true">查询</button>
+        </div>
+    </div>
+    <div class="table-div table_today2">
+        <ul class="tabletop_list sx_zi ng-hide" ng-show="ifShow">
+            <li>找到<span class="bianzi ng-binding">0</span>个相关信息：<span ng-click="ifShowClick();ifShow=false" class="bianzi cursorpoint">[取消筛选]</span></li>
+        </ul>
+        <table class="table inputquk yy_list yy_list2 iedelete cursor_point" ng-class="{'tablefixd2':!searchTodayVisitedPatient.length==0&amp;&amp;!loading}">
+            <thead>
+            <tr>
+                <th class="yyzx_list firstth">患者</th>
+                <th>病历号</th>
+                <th>手机号</th>
+                <th>初/复诊</th>
+                <th>就诊时间</th>
+                <th>完成时间</th>
+                <th>医生</th>
+                <th>就诊事项</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- ngRepeat: b in searchTodayVisitedPatient -->
+            <tr ng-show="loading" class="quse ng-hide" style=""><td colspan="9">正在查询数据....</td></tr>
+            <tr ng-show="searchTodayVisitedPatient.length==0&&!loading" class="quse" style=""><td colspan="9" class="nomasage"></td></tr>
+            </tbody>
+        </table>
+        <div class="page-list ng-isolate-scope ng-hide" ng-show="conf.totalItems>conf.itemsPerPage" conf="paginationConf"><ul class="pagination ng-hide" ng-show="conf.totalItems > 0"><li ng-class="{disabled: conf.currentPage == 1}" ng-click="firstPage()" class="disabled"><span class="fa fa-angle-double-left"></span></li><li ng-class="{disabled: conf.currentPage == 1}" ng-click="prevPage()" class="disabled"><span class="fa fa-angle-left"></span></li><!-- ngRepeat: item in pageList track by $index --><li ng-class="{disabled: conf.currentPage == conf.numberOfPages}" ng-click="nextPage()"><span class="fa fa-angle-right"></span></li><li ng-class="{disabled: conf.currentPage == conf.numberOfPages}" ng-click="lastPage(item)"><span class="fa fa-angle-double-right"></span></li></ul><div class="page-total ng-hide" ng-show="conf.totalItems > 0">第 <input type="text" ng-model="jumpPageNum" ng-keyup="jumpToPage($event)" class="ng-pristine ng-untouched ng-valid"> 页 &nbsp;&nbsp;&nbsp;&nbsp;共<strong class="ng-binding">0</strong>条</div><div class="no-items" ng-show="conf.totalItems <= 0" style="">暂无数据</div></div>
+    </div>
+</div>
+
+    <div class="showhidefromright ng-hide ng-isolate-scope" ng-show="isShow" patient-code="detail_patientCode" booking-id="detail_bookingId" callback="detail_callback" is-show="detail_showBookDetail" show-operate="showOperate" show-patient-detail="showPatientDetail">
+        <div class="showhidefromrightInner" ng-click="$event.stopPropagation();">
+            <div class="patient_header">
+                <div class="header_left">详细信息</div>
+                <div class="header_right topling marright16"><img src="/images/closex.png" class="cursorpoint" ng-click="isShow=!isShow"></div>
+            </div>
+            <div class="folder_zone">
+                <div class="folder_head">
+                    <div class="co-1"><i class="icon-hzxx2 icon-new2 vermiddle marrighttitle"></i></div>
+                    <div class="co-2 font-lg texthide ng-binding" ng-bind="patientInfo.PatientName"></div>
+                    <div class="co-3 font-sm color-light ng-binding">&nbsp;</div>
+                    <div class="co-4 text-right">
+                        <!--<img src="/images/patientErweima.jpg" class="cursorpoint" ng-click="openErweima()">-->
+                        <i ng-class="{'fa fa-star yellow':patientAllInfo.isImportant==1,'fa fa-star grey':patientAllInfo.isImportant!=1}" class="fa fa-star grey" style=""></i>
+                    </div>
+                    <div class="drag-icon" ng-click="show1=!show1"><i class="fa fa-angle-down" ng-class="{'fa fa-angle-down':show1,'fa fa-angle-down transform':!show1}" ng-init="show1=true;"></i></div>
+                </div>
+                <div ng-class="{'folder_out':show1,'folder_out none':!show1}" class="folder_out">
+                    <div class="folder_content">
+                        <div class="co-1"></div>
+                        <div class="co-2">病历号</div>
+                        <div class="co-3 ng-binding" ng-bind="patientInfo.PatientCode"></div>
+                        <div class="co-4" style="height:25px;"><img class="profile" src="/images/patientDef.png"></div>
+                    </div>
+                    <div class="folder_content clearfloat">
+                        <div class="co-1"></div>
+                        <div class="co-2">手机号</div>
+                        <div class="co-3 ng-binding">&nbsp;&nbsp;&nbsp;<span ng-show="patientInfo.Tel" class="fa fa-envelope-o cursorpoint ng-hide" ng-click="sendSMS()"></span></div>
+                        <div class="co-4"></div>
+                    </div>
+                    <div class="folder_content">
+                        <div class="co-1"></div>
+                        <div class="co-2">座机</div>
+                        <div class="co-3 texthide ng-binding" title=""></div>
+                        <div class="co-4"></div>
+                    </div>
+                    <div class="folder_content">
+                        <div class="co-1"></div>
+                        <div class="co-2">其它方式</div>
+                        <div class="co-3 texthide ng-binding" title=""></div>
+                        <div class="co-4"></div>
+                    </div>
+                    <div class="folder_content">
+                        <div class="co-1"></div>
+                        <div class="co-2">家庭住址</div>
+                        <div class="co-3 yysx_ch ng-binding">&nbsp;&nbsp;<br></div>
+                    </div>
+                    <div class="clearfloat"></div>
+                    <!-- ngIf: showOperate --><div class="button-zone ng-scope" ng-if="showOperate">
+                    <button type="button" class="button-a1" ng-click="editPatientInfo(patientInfo.PatientCode)">完善信息</button>
+                    <button type="button" class="button-a1" ng-click="createbook(patientInfo.PatientCode)">新增预约</button>
+                    <button type="button" class="button-a1" ng-click="addBackVisitInfo(patientInfo.PatientCode)">新增回访</button>
+                    <button type="button" class="button-a1" ng-click="createProcess(patientInfo.PatientCode)">新增外加工</button>
+                    <button type="button" class="button-a1" ng-click="editExamination(patientInfo)">病历首页</button>
+                    <button type="button" class="button-a1" ng-click="oppenAddCase(patientInfo.PatientCode)">新增病历</button>
+                    <button type="button" class="button-a1" ng-click="addCost(patientInfo.PatientCode)">新增收费单</button>
+                    <button ng-hide="sidebarDoctorNav" type="button" class="button-a1" ng-click="addHandIn(patientInfo)">充值</button>
+                </div><!-- end ngIf: showOperate -->
+                    <!-- ngIf: showOperate && (patientInfo.Enabled != deletedPatientFlag) --><div ng-if="showOperate &amp;&amp; (patientInfo.Enabled != deletedPatientFlag)" class="text-center ng-scope" ng-click="showPatientInfo(patientInfo.PatientCode)">
+                    <span class="border_zi borderbottom text-center bianzil cursorpoint font-lg">个人中心&gt;&gt;</span>
+                </div><!-- end ngIf: showOperate && (patientInfo.Enabled != deletedPatientFlag) -->
+                </div>
+            </div>
+            <!--挂号详情-->
+            <!-- ngIf: bindPrintTemplate -->
+        </div>
+    </div>
+
+</div>

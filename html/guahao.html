@@ -1,0 +1,99 @@
+<div class="submenu_list2 " style="">
+    ﻿<div class="content-container yyzxtop">
+    <div class="first">
+        <div>
+            <p>患者</p>
+            <input class="ng-pristine ng-untouched ng-valid" type="text" ng-model="searchCondition.SearchStr" placeholder="姓名/拼音码/手机号">
+        </div>
+        <div>
+            <p>类型</p>
+            <select ng-model="searchCondition.selectedBookState" ng-options="item.name for item in selectItem"></select>
+            <!--<div ng-class="{'disabled': dropdownDisabled}" class="wrap-dd-select ng-isolate-scope" tabindex="0" dropdown-select="bookState" dropdown-model="searchCondition.selectedBookState" dropdown-item-label="text"><span ="dropdownBackgroundcolor" class="selected ng-binding">全部状态</span><span ng-show="dropdownBackgroundcolor" class="dropdowncircle " ng-style="{background:dropdownModel[dropdownBackgroundcolor]}"></span><ul class="dropdown">&lt;!&ndash; ngRepeat: item in dropdownSelect &ndash;&gt;<li ng-class="{divider: (dropdownSelectItem.divider &amp;&amp; !dropdownSelectItem[dropdownItemLabel]), 'divider-label': (dropdownSelectItem.divider &amp;&amp; dropdownSelectItem[dropdownItemLabel]),'dropdownselectedItem':(dropdownSelectItem==dropdownSelectedModel)}" ng-repeat="item in dropdownSelect" class="dropdown-item ng-isolate-scope dropdownselectedItem" dropdown-select-item="item" dropdown-selected-model="dropdownModel" dropdown-item-label="labelField" dropdown-borderc="dropdownBordercolor" dropdown-backcolor="dropdownBackgroundcolor">&lt;!&ndash; ngIf: !dropdownSelectItem.divider &ndash;&gt;<a class="dropdown-item ng-binding " ng-if="!dropdownSelectItem.divider" ng-href="" ng-click="selectItem()"><span class="dropdowncircle " ng-show="dropdownSelectItem[dropdownBackcolor]" ng-style="{background:dropdownSelectItem[dropdownBackcolor],border:dropdownSelectItem[dropdownBorderc]}"></span>全部状态</a>&lt;!&ndash; end ngIf: !dropdownSelectItem.divider &ndash;&gt;&lt;!&ndash; ngIf: dropdownSelectItem.divider &ndash;&gt;</li>&lt;!&ndash; end ngRepeat: item in dropdownSelect &ndash;&gt;<li ng-class="{divider: (dropdownSelectItem.divider &amp;&amp; !dropdownSelectItem[dropdownItemLabel]), 'divider-label': (dropdownSelectItem.divider &amp;&amp; dropdownSelectItem[dropdownItemLabel]),'dropdownselectedItem':(dropdownSelectItem==dropdownSelectedModel)}" ng-repeat="item in dropdownSelect" class="dropdown-item ng-isolate-scope" dropdown-select-item="item" dropdown-selected-model="dropdownModel" dropdown-item-label="labelField" dropdown-borderc="dropdownBordercolor" dropdown-backcolor="dropdownBackgroundcolor">&lt;!&ndash; ngIf: !dropdownSelectItem.divider &ndash;&gt;<a class="dropdown-item ng-binding " ng-if="!dropdownSelectItem.divider" ng-href="" ng-click="selectItem()"><span class="dropdowncircle " ng-show="dropdownSelectItem[dropdownBackcolor]" ng-style="{background:dropdownSelectItem[dropdownBackcolor],border:dropdownSelectItem[dropdownBorderc]}"></span>未到达</a>&lt;!&ndash; end ngIf: !dropdownSelectItem.divider &ndash;&gt;&lt;!&ndash; ngIf: dropdownSelectItem.divider &ndash;&gt;</li>&lt;!&ndash; end ngRepeat: item in dropdownSelect &ndash;&gt;<li ng-class="{divider: (dropdownSelectItem.divider &amp;&amp; !dropdownSelectItem[dropdownItemLabel]), 'divider-label': (dropdownSelectItem.divider &amp;&amp; dropdownSelectItem[dropdownItemLabel]),'dropdownselectedItem':(dropdownSelectItem==dropdownSelectedModel)}" ng-repeat="item in dropdownSelect" class="dropdown-item ng-isolate-scope" dropdown-select-item="item" dropdown-selected-model="dropdownModel" dropdown-item-label="labelField" dropdown-borderc="dropdownBordercolor" dropdown-backcolor="dropdownBackgroundcolor">&lt;!&ndash; ngIf: !dropdownSelectItem.divider &ndash;&gt;<a class="dropdown-item ng-binding " ng-if="!dropdownSelectItem.divider" ng-href="" ng-click="selectItem()"><span class="dropdowncircle " ng-show="dropdownSelectItem[dropdownBackcolor]" ng-style="{background:dropdownSelectItem[dropdownBackcolor],border:dropdownSelectItem[dropdownBorderc]}"></span>候诊中</a>&lt;!&ndash; end ngIf: !dropdownSelectItem.divider &ndash;&gt;&lt;!&ndash; ngIf: dropdownSelectItem.divider &ndash;&gt;</li>&lt;!&ndash; end ngRepeat: item in dropdownSelect &ndash;&gt;<li ng-class="{divider: (dropdownSelectItem.divider &amp;&amp; !dropdownSelectItem[dropdownItemLabel]), 'divider-label': (dropdownSelectItem.divider &amp;&amp; dropdownSelectItem[dropdownItemLabel]),'dropdownselectedItem':(dropdownSelectItem==dropdownSelectedModel)}" ng-repeat="item in dropdownSelect" class="dropdown-item ng-isolate-scope" dropdown-select-item="item" dropdown-selected-model="dropdownModel" dropdown-item-label="labelField" dropdown-borderc="dropdownBordercolor" dropdown-backcolor="dropdownBackgroundcolor">&lt;!&ndash; ngIf: !dropdownSelectItem.divider &ndash;&gt;<a class="dropdown-item ng-binding " ng-if="!dropdownSelectItem.divider" ng-href="" ng-click="selectItem()"><span class="dropdowncircle " ng-show="dropdownSelectItem[dropdownBackcolor]" ng-style="{background:dropdownSelectItem[dropdownBackcolor],border:dropdownSelectItem[dropdownBorderc]}"></span>治疗中</a>&lt;!&ndash; end ngIf: !dropdownSelectItem.divider &ndash;&gt;&lt;!&ndash; ngIf: dropdownSelectItem.divider &ndash;&gt;</li>&lt;!&ndash; end ngRepeat: item in dropdownSelect &ndash;&gt;<li ng-class="{divider: (dropdownSelectItem.divider &amp;&amp; !dropdownSelectItem[dropdownItemLabel]), 'divider-label': (dropdownSelectItem.divider &amp;&amp; dropdownSelectItem[dropdownItemLabel]),'dropdownselectedItem':(dropdownSelectItem==dropdownSelectedModel)}" ng-repeat="item in dropdownSelect" class="dropdown-item ng-isolate-scope" dropdown-select-item="item" dropdown-selected-model="dropdownModel" dropdown-item-label="labelField" dropdown-borderc="dropdownBordercolor" dropdown-backcolor="dropdownBackgroundcolor">&lt;!&ndash; ngIf: !dropdownSelectItem.divider &ndash;&gt;<a class="dropdown-item ng-binding " ng-if="!dropdownSelectItem.divider" ng-href="" ng-click="selectItem()"><span class="dropdowncircle " ng-show="dropdownSelectItem[dropdownBackcolor]" ng-style="{background:dropdownSelectItem[dropdownBackcolor],border:dropdownSelectItem[dropdownBorderc]}"></span>已完成</a>&lt;!&ndash; end ngIf: !dropdownSelectItem.divider &ndash;&gt;&lt;!&ndash; ngIf: dropdownSelectItem.divider &ndash;&gt;</li>&lt;!&ndash; end ngRepeat: item in dropdownSelect &ndash;&gt;<li ng-class="{divider: (dropdownSelectItem.divider &amp;&amp; !dropdownSelectItem[dropdownItemLabel]), 'divider-label': (dropdownSelectItem.divider &amp;&amp; dropdownSelectItem[dropdownItemLabel]),'dropdownselectedItem':(dropdownSelectItem==dropdownSelectedModel)}" ng-repeat="item in dropdownSelect" class="dropdown-item ng-isolate-scope" dropdown-select-item="item" dropdown-selected-model="dropdownModel" dropdown-item-label="labelField" dropdown-borderc="dropdownBordercolor" dropdown-backcolor="dropdownBackgroundcolor">&lt;!&ndash; ngIf: !dropdownSelectItem.divider &ndash;&gt;<a class="dropdown-item ng-binding " ng-if="!dropdownSelectItem.divider" ng-href="" ng-click="selectItem()"><span class="dropdowncircle " ng-show="dropdownSelectItem[dropdownBackcolor]" ng-style="{background:dropdownSelectItem[dropdownBackcolor],border:dropdownSelectItem[dropdownBorderc]}"></span>已取消</a>&lt;!&ndash; end ngIf: !dropdownSelectItem.divider &ndash;&gt;&lt;!&ndash; ngIf: dropdownSelectItem.divider &ndash;&gt;</li>&lt;!&ndash; end ngRepeat: item in dropdownSelect &ndash;&gt;<li ng-show="lastItem" ng-class="lastItem.outerclass" ng-click="lastItem.event()" class=""><img><span ng-bind="lastItem.text+lastItem.iconSrc" class="ng-binding"></span></li></ul></div>-->
+        </div>
+        <div>
+            <p>&nbsp;</p>
+            <button class="button-a1" ng-click="search();ifShow=true">查询</button>
+        </div>
+    </div>
+    <div class="table-div">
+        <ul class="tabletop_list sx_zi" ng-show="ifShow">
+            <li>找到<span class="bianzi" ng-bind="searchTodayPatlog.length">0</span>个相关信息：<span ng-click="ifShowClick();ifShow=false" class="bianzi cursorpoint">[取消筛选]</span></li>
+        </ul>
+        <table class="table inputquk yy_list yy_list2 cursor_point" ng-class="{'tablefixd2':!searchBooks.length==0&&!loading}">
+            <thead>
+            <tr>
+                <th class="yyzx_list firstth">患者</th>
+                <th>手机号</th>
+                <th>类型</th>
+                <th>初/复诊</th>
+                <th>挂号时间</th>
+                <th>就诊时间</th>
+                <th>医生</th>
+                <th>就诊事项</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="loading" class="quse " style=""><td colspan="9">正在查询数据....</td></tr>
+                <tr ng-show="searchTodayPatlog.length==0&&!loading" class="quse" style=""><td colspan="9" class="nomasage"></td></tr>
+                <tr ng-repeat="b in searchTodayPatlog" ng-click="showDetail(b);$event.stopPropagation()" trselected="" class="">
+                    <td>
+                        <img ng-src="./images/patientDef.png" class="img-circle">
+                        <span class="set_show padnine texthide" patientname="b.PatientName" patientcode="b.PatientCode" ng-bind="b.PatientName" sex="b.Sex" age="b.Age" tel="b.Tel" ></span>
+                        <span ng-click="setImportant(b);$event.stopPropagation()" ng-class="{'fa fa-star yellow':b.isImportant,'fa fa-star grey':!b.isImportant}" class="fa fa-star grey"></span>
+                    </td>
+                    <td ng-bind="b.Tel" class=""></td>
+                    <td ng-bind="b.TableType==1?'预约':'挂号'" class="ng-binding">挂号</td>
+                    <td><span ng-class="{'cz_color':(b.PatlogType==0),'fz_color':(b.PatlogType==1)}" ng-bind="b.PatlogType|patlogType" class="ng-binding cz_color">初诊</span></td>
+                    <td ng-show="b.Time!=null" class="">ll:ll-ll:ll</td>
+                    <td ng-show="b.Time==null" class="">-</td>
+                    <td ng-bind="b.SeeDoctorTime|date:'HH:mm'" class=""></td>
+                    <td>
+                        <span class="set_docname padnine texthide cursorpoint" ng-show="b.DoctorName" ng-bind="b.DoctorName" ng-click="OpenResetPatlogDoctorWindow(b.Id,b.PatientCode,b.DoctorCode,b.DoctorName,$index);$event.stopPropagation()">fsdfs</span>
+                        <span class="set_docname padnine texthide cursorpoint" ng-show="!b.DoctorName" ng-click="OpenSetPatlogDoctorWindow(b.Id,b.PatientCode,$index);$event.stopPropagation()">未分诊</span>
+                    </td>
+                    <td><span class="set_docname padnine texthide ng-binding" ng-bind="b.Aim"></span></td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="page-list ng-isolate-scope " ng-show="conf.totalItems>conf.itemsPerPage" conf="paginationConf"><ul class="pagination " ng-show="conf.totalItems > 0"><li ng-class="{disabled: conf.currentPage == 1}" ng-click="firstPage()" class="disabled"><span class="fa fa-angle-double-left"></span></li><li ng-class="{disabled: conf.currentPage == 1}" ng-click="prevPage()" class="disabled"><span class="fa fa-angle-left"></span></li><!-- ngRepeat: item in pageList track by $index --><li ng-class="{disabled: conf.currentPage == conf.numberOfPages}" ng-click="nextPage()"><span class="fa fa-angle-right"></span></li><li ng-class="{disabled: conf.currentPage == conf.numberOfPages}" ng-click="lastPage(item)"><span class="fa fa-angle-double-right"></span></li></ul><div class="page-total " ng-show="conf.totalItems > 0">第 <input type="text" ng-model="jumpPageNum" ng-keyup="jumpToPage($event)" class="ng-pristine ng-untouched ng-valid"> 页 &nbsp;&nbsp;&nbsp;&nbsp;共<strong class="ng-binding">0</strong>条</div><div class="no-items" ng-show="conf.totalItems <= 0" style="">暂无数据</div></div>
+    </div>
+</div>
+
+    <div class="showhidefromright  ng-isolate-scope" ng-show="isShow" patient-code="detail_patientCode" booking-id="detail_bookingId" callback="detail_callback" is-show="detail_showBookDetail" show-operate="showOperate" show-patient-detail="showPatientDetail">
+        <div class="showhidefromrightInner" ng-click="$event.stopPropagation();">
+            <div class="patient_header">
+                <div class="header_left">详细信息</div>
+                <div class="header_right topling marright16"><img src="./images/closex.png" class="cursorpoint" ng-click="isShow=!isShow"></div>
+            </div>
+            <div class="folder_zone">
+                <div class="folder_head">
+                    <div class="co-1"><i class="icon-hzxx2 icon-new2 vermiddle marrighttitle"></i></div>
+                    <div class="co-2 font-lg texthide ng-binding" ng-bind="patientInfo.PatientName"></div>
+                    <div class="co-3 font-sm color-light ng-binding">&nbsp;</div>
+                    <div class="drag-icon" ng-click="show1=!show1"><i class="fa fa-angle-down" ng-class="{'fa fa-angle-down':show1,'fa fa-angle-down transform':!show1}" ng-init="show1=true;"></i></div>
+                </div>
+                <div ng-class="{'folder_out':show1,'folder_out none':!show1}" class="folder_out">
+                    <div class="folder_content">
+                        <div class="co-1"></div>
+                        <div class="co-2">病历号</div>
+                        <div class="co-3 ng-binding" ng-bind="patientInfo.PatientCode"></div>
+                        <div class="co-4" style="height:25px;"><img class="profile" src="./images/patientDef.png"></div>
+                    </div>
+                    <div class="folder_content clearfloat">
+                        <div class="co-1"></div>
+                        <div class="co-2">手机号</div>
+                        <div class="co-3 ng-binding"><span ng-bind="patientInfo.Tel"></span></div>
+                        <div class="co-4"></div>
+                    </div>
+                    <div class="folder_content">
+                        <div class="co-1"></div>
+                        <div class="co-2">座机</div>
+                        <div class="co-3 texthide" title=""><span ng-bind="patientInfo.Phone_First"></span>-<span ng-bind="patientInfo.Phone_Second"></span></div>
+                        <div class="co-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

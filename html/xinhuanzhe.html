@@ -1,0 +1,99 @@
+<div class="submenu_list2 ng-scope" style="">
+    ﻿<div class="content-container yyzxtop">
+    <div class="first">
+        <div>
+            <p>患者</p>
+            <input class="ng-pristine ng-untouched ng-valid" type="text" ng-model="searchCondition.SearchStr" placeholder="姓名/病历号/拼音码/手机号">
+        </div>
+        <div>
+            <p>&nbsp;</p>
+            <button class="button-a1" ng-click="search();ifShow=true">查询</button>
+        </div>
+    </div>
+    <div class="table-div table_today2">
+        <ul class="tabletop_list sx_zi ng-hide" ng-show="ifShow">
+            <li>找到<span class="bianzi ng-binding">0</span>个相关信息：<span ng-click="ifShowClick();ifShow=false" class="bianzi cursorpoint">[取消筛选]</span></li>
+        </ul>
+        <table class="table inputquk yy_list yy_list2 iedelete cursor_point" ng-class="{'tablefixd2':!searchTodayVisitedPatient.length==0&amp;&amp;!loading}">
+            <thead>
+            <tr>
+                <th class="yyzx_list firstth">患者</th>
+                <th>病历号</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>手机</th>
+                <th>地址</th>
+                <th>意向医生</th>
+                <th>患者来源</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- ngRepeat: b in searchTodayVisitedPatient -->
+            <tr ng-show="loading" class="quse" style=""><td colspan="9">正在查询数据....</td></tr>
+            <tr ng-show="searchTodayVisitedPatient.length==0&&!loading" class="quse" style=""><td colspan="9" class="nomasage"></td></tr>
+            <tr ng-repeat="b in searchTodayVisitedPatient" ng-click="showDetail(b);$event.stopPropagation()" trselected="" class="ng-scope">
+                <td>
+                    <img ng-src="./images/patientDef.png" class="img-circle">
+                    <span class="set_show padnine texthide" ng-bind="b.PatientName">小明</span>
+                </td>
+                <td ng-bind="b.PatientCode" class="">100002</td>
+                <td ng-bind="b.Sex" class="">男</td>
+                <td ng-bind="b.Age" class="">18</td>
+                <td ng-bind="b.Tel" class="">15555555555</td>
+                <!--<td ng-bind="b.OtherContacts"></td>-->
+                <td title="北京市 西城区 新街口 " class="padnine ng-binding selectColor">
+                    <span ng-bind="b.province"></span>
+                    <span ng-bind="b.city"></span>
+                    <span ng-bind="b.area"></span>
+                </td>
+                <td ng-bind="b.IntentionDoctorName" class="ng-binding">fsdfs</td>
+                <td><span ng-bind="b.PatientsWithName" class="ng-binding"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    <div class="showhidefromright ng-hide ng-isolate-scope" ng-show="isShow" patient-code="detail_patientCode" booking-id="detail_bookingId" callback="detail_callback" is-show="detail_showBookDetail" show-operate="showOperate" show-patient-detail="showPatientDetail">
+        <div class="showhidefromrightInner" ng-click="$event.stopPropagation();">
+            <div class="patient_header">
+                <div class="header_left">详细信息</div>
+                <div class="header_right topling marright16"><img src="./images/closex.png" class="cursorpoint" ng-click="isShow=!isShow"></div>
+            </div>
+            <div class="folder_zone">
+                <div class="folder_head">
+                    <div class="co-1"><i class="icon-hzxx2 icon-new2 vermiddle marrighttitle"></i></div>
+                    <div class="co-2 font-lg texthide" ng-bind="patientInfo.PatientName"></div>
+                    <div class="co-3 font-sm color-light ng-binding">&nbsp;</div>
+                    <div class="co-4 text-right">
+                        <!--<img src="/images/patientErweima.jpg" class="cursorpoint" ng-click="openErweima()">-->
+                        <i ng-class="{'fa fa-star yellow':patientAllInfo.isImportant==1,'fa fa-star grey':patientAllInfo.isImportant!=1}" class="fa fa-star grey" style=""></i>
+                    </div>
+                    <div class="drag-icon" ng-click="show1=!show1"><i class="fa fa-angle-down" ng-class="{'fa fa-angle-down':show1,'fa fa-angle-down transform':!show1}" ng-init="show1=true;"></i></div>
+                </div>
+                <div ng-class="{'folder_out':show1,'folder_out none':!show1}" class="folder_out">
+                    <div class="folder_content">
+                        <div class="co-1"></div>
+                        <div class="co-2">病历号</div>
+                        <div class="co-3 ng-binding" ng-bind="patientInfo.PatientCode"></div>
+                        <div class="co-4" style="height:25px;"><img class="profile" src="./images/patientDef.png"></div>
+                    </div>
+                    <div class="folder_content clearfloat">
+                        <div class="co-1"></div>
+                        <div class="co-2">手机号</div>
+                        <div class="co-3"><span ng-bind="patientInfo.Tel"></span>&nbsp;&nbsp;&nbsp;</div>
+                        <div class="co-4"></div>
+                    </div>
+                    <div class="folder_content">
+                        <div class="co-1"></div>
+                        <div class="co-2">家庭住址</div>
+                        <div class="co-3 yysx_ch"><span ng-bind="patientInfo.province"></span>
+                            <span ng-bind="patientInfo.city"></span>
+                            <span ng-bind="patientInfo.area"></span><br>
+                            <span ng-bind="patientInfo.address"></span></div>
+                    </div>
+                </div><!-- end ngIf: showOperate -->
+            </div>
+        </div>
+    </div>
+</div>
